@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Client } from "src/resources/clients/entities/client.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: 'countries'})
 export class Country {
@@ -7,4 +8,7 @@ export class Country {
 
     @Column()
     name: string
+
+    @OneToMany(() => Client, client => client.country)
+    clients: Client[]
 }
