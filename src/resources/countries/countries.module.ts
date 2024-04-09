@@ -3,9 +3,10 @@ import { CountriesService } from './countries.service';
 import { CountriesController } from './countries.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Country } from './entities/country.entity';
+import { Client } from '../clients/entities/client.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Country])],
+  imports: [TypeOrmModule.forFeature([Country, Client])],
   controllers: [CountriesController],
   providers: [CountriesService],
 })
