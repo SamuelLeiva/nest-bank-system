@@ -1,5 +1,6 @@
 import { Client } from "src/resources/clients/entities/client.entity";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Product } from "src/resources/products/entities/product.entity";
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: 'countries'})
 export class Country {
@@ -11,4 +12,8 @@ export class Country {
 
     @OneToMany(() => Client, client => client.country)
     clients: Client[]
+
+    @ManyToMany(() => Product)
+    @JoinTable()
+    products: Product[]
 }
